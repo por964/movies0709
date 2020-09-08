@@ -37,11 +37,13 @@ public class MovieFacadeTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
+        String [] acts1 ={"Goeg","Gokke"};
+        String [] acts2 ={"Rip", "Rap","Rup"};
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            //em.persist(new Movie("Some txt", "More text"));
-            //em.persist(new Movie("aaa", "bbb"));
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
+            em.persist(new Movie(1965,"Komedie", acts1));
+            em.persist(new Movie(1980,"Anders And",acts2));
 
             em.getTransaction().commit();
         } finally {
@@ -57,7 +59,7 @@ public class MovieFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+        assertEquals(2, facade.getMovieCount(), "Expects two rows in the database");
     }
 
 }

@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class MovieMeResourceTest {
+public class MovieResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
@@ -62,11 +62,13 @@ public class MovieMeResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        //r1 = new RenameMe("Some txt","More text");
-        //r2 = new RenameMe("aaa","bbb");
+        String [] acts1 ={"Goeg","Gokke"};
+        String [] acts2 ={"Rip", "Rap","Rup"};
+        r1 = new Movie(1965,"Komedie",acts1);
+        r2 = new Movie(1980,"Anders And",acts2);
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
             em.persist(r1);
             em.persist(r2); 
             em.getTransaction().commit();
@@ -78,7 +80,7 @@ public class MovieMeResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/xxx").then().statusCode(200);
+        given().when().get("/test").then().statusCode(200);
     }
    
     //This test assumes the database contains two rows
@@ -86,7 +88,7 @@ public class MovieMeResourceTest {
     public void testDummyMsg() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/").then()
+        .get("/test/").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("msg", equalTo("Hello World"));   
@@ -96,7 +98,7 @@ public class MovieMeResourceTest {
     public void testCount() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/count").then()
+        .get("/movie/count").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   

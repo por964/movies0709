@@ -27,12 +27,12 @@ public class TestResource {
      @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
-        /*
+        
         System.out.println("DEPLOYED       -->"+System.getenv("DEPLOYED"));
         System.out.println("USER           -->"+System.getenv("USER"));
         System.out.println("PW             -->"+System.getenv("PW"));
         System.out.println("CONNECTION_STR -->"+System.getenv("CONNECTION_STR"));
-        */
+        
         return "{\"msg\":\"Hello World\"}";
     }
 }

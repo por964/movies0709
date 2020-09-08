@@ -31,11 +31,10 @@ public class Movie implements Serializable {
         this.title = title;
         this.actors = actors;
     }
-
     
     public Movie() {
     }
-        
+
     public Long getId() {
         return id;
     }
@@ -43,5 +42,31 @@ public class Movie implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
+    
        
 }

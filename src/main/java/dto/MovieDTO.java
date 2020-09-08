@@ -1,25 +1,27 @@
 package dto;
 
-import entities.Employee;
+import entities.Movie;
 
 /**
  *
  * @author claes
  */
-public class EmployeeDTO {
+public class MovieDTO {
     
-        private int id;
-    private String name;
-    private String address;
+    private Long id;
+    private int year;
+    private String title;
+    private String [] actors;
     
-    public EmployeeDTO() {
+    public MovieDTO() {
     }
     
 
-    public EmployeeDTO(Employee employee) {
-        this.id = employee.getId();
-        this.name = employee.getName();
-        this.address = employee.getAddress();
+    public MovieDTO(Movie movie) {
+        this.id = movie.getId();
+        this.year = movie.getYear();
+        this.title = movie.getTitle();
+        this.actors = movie.getActors();
     }
 
     
